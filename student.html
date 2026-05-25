@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Name Collector</title>
+</head>
+<body>
+
+<h2>Enter Your Name</h2>
+
+<input type="text" id="nameInput" placeholder="Enter name">
+<button onclick="sendName()">Submit</button>
+
+<script>
+
+function sendName() {
+
+    let name = document.getElementById("nameInput").value;
+
+    if(name.trim() === ""){
+        alert("Please enter a name");
+        return;
+    }
+
+    fetch("PASTE_YOUR_SCRIPT_URL_HERE", {
+        method: "POST",
+        body: JSON.stringify({
+            name: name
+        })
+    })
+    .then(response => alert("Name saved"))
+    .catch(error => alert("Error"));
+
+    document.getElementById("nameInput").value="";
+}
+
+</script>
+
+</body>
+</html>
